@@ -1,0 +1,105 @@
+Display Menu
+
+left -> res -> rightclick drawable -> new-> vector Asset  -> (chhose radom icon) bluetooth ->OK
+Name:ic_icon ->finish
+res -> right click -> new -> Android resource directory 
+Resource type:Menu ->ok
+(then we have menu folder under res (visible in left side).
+right click ->new ->menu resource file
+File name:example_menu
+
+
+
+
+example_menu.xml
+
+<?xml version="1.0" encoding="utf-8">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+   xmlns:app="http://schemas.android.com/apk/res-auto">
+
+      <item anroid:id="@+id/item1"
+      android:icon="@drawable/ic_icon"
+      android:title="Item1"
+      app:showAsAction="ifRoom"
+      
+</menu>
+
+
+
+
+
+<?xml version ="1.0" encoding="utf"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+   xmlns:app="http://schemas.android.com/apk/res-auto">
+   
+   <item android:id="@+id/item1"
+   android:icon="@drawable/ic_icon"
+   android:tittle="Item1"
+   app:showAction="ifRoom"/>
+   
+   <item android:id="@+id/item2"
+   android:tittle="Item2"
+   app:showAction="never"/>
+   
+   <item android:id="@+id/item3"
+   android:tittle="Item3"
+   app:showAction="never"/>
+   
+   <menu>
+          <item android:id="@+id/subitem1"
+          android:tittle="sub item1"
+          
+          <item android:id="@+id/subitem2"
+          android:tittle="sub item2"
+   </menu>
+   
+   </item>
+
+
+
+
+
+
+
+MainActivity.java
+package com.example.application.optionsmenuexample;
+import ...
+public class MainActivity extends AppCompatActivity{
+  @Override
+  protected void onCreate(Bundle savedInstanceState){
+   super.onCreate(savedInstanceState);
+   setContentView(R.layout.activity_main);
+   }
+   
+   @Override
+   public boolean onCreateOptionsMenu(Menu menu){
+   MenuInflater inflater = getMenuInflater();
+   inflater.inflate(R.menu.example_menu, menu);
+   return true;
+   }
+   
+   @override
+   public boolean onOptionItemSeleted(MenuItem item){
+   switch(item.getItemId()){
+     case R.id.item1:
+     Toast.makeText(this,"Item 1 selected", Toast.LENGTH_SHORT).show();
+     return true;
+     case R.id.item2:
+     Toast.makeText(this,"Item 2 selected", Toast.LENGTH_SHORT).show();
+     return true;
+     case R.id.item3:
+     Toast.makeText(this,"Item 3 selected", Toast.LENGTH_SHORT).show();
+     return true;
+     
+     case R.id.subitem1:
+     Toast.makeText(this,"subItem1 selected", Toast.LENGTH_SHORT).show();
+     return true;
+     case R.id.subitem2:
+     Toast.makeText(this,"subItem 2 selected", Toast.LENGTH_SHORT).show();
+     return true;
+     default:
+   return super.onOptionsItemSelected(item);
+   }
+   }
+   }
+
